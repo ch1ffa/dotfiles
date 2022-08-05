@@ -81,7 +81,6 @@ local function config(_config)
   }, _config or {})
 end
 
--- omnisharp lsp config
 local omnisharp_bin = "/Users/ch1ffa/.local/omnisharp/OmniSharp" 
 require'lspconfig'.omnisharp.setup(config({
   cmd = { omnisharp_bin, "--languageserver" , "--hostPID", tostring(pid) }
@@ -89,11 +88,12 @@ require'lspconfig'.omnisharp.setup(config({
 
 require("lspconfig").rust_analyzer.setup(config({
   cmd = { "rustup", "run", "stable", "rust-analyzer" }
+}))
 
-  require("lspconfig").tsserver.setup(config())
+require("lspconfig").tsserver.setup(config())
 
-  require("lspconfig").relay_lsp.setup(config({
-    auto_start_compiler = true,
-  }))
+require("lspconfig").relay_lsp.setup(config({
+  auto_start_compiler = true,
+}))
 
-  require("luasnip.loaders.from_vscode").lazy_load()
+require("luasnip.loaders.from_vscode").lazy_load()
